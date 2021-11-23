@@ -36,7 +36,7 @@ jobs:
     # Database setup
     - run: mv ./config/database.yml.ci ./config/database.yml
 
-    # Database setup
+    # Database
     - run:
         name: Databasesetup
         command: |
