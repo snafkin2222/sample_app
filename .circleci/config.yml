@@ -8,11 +8,8 @@ jobs:
         - RAILS_ENV: 'test'
     - image: circleci/mysql:5.7
       environment:
-        # - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-        # - MYSQL_ROOT_HOST: '127.0.0.1'
-           DB_HOST: 127.0.0.1
-           DB_USERNAME: 'root'
-           DB_PASSWORD: ''
+        - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+        - MYSQL_ROOT_HOST: '127.0.0.1'
 
     working_directory: ~/sample_app  #自身のアプリディレクトリ名を設定  
 
@@ -40,11 +37,11 @@ jobs:
     - run: mv ./config/database.yml.ci ./config/database.yml
 
     # Database
-    - run:
-        name: Databasesetup
-        command: |
-           bundle exec rake db:create RAILS_ENV=test
-           bundle exec rake db:schema:load RAILS_ENV=test
+    # - run:
+    #     name: Databasesetup
+    #     command: |
+    #        bundle exec rake db:create
+    #        bundle exec rake db:schema:load
 
     # run tests!
     - run:
